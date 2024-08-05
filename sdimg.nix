@@ -11,6 +11,35 @@
     extraGroups = ["wheel"];
   };
 
+  boot.postBootCommands = ''
+    # On the first boot do some maintenance tasks
+    if [ -f /nix-path-registration ]; then
+      set -euo pipefail
+      set -x
+      # Figure out device names for the boot device and root filesystem.
+      rootPart=$(${pkgs.util-linux}/bin/findmnt -n -o SOURCE /)
+      # Remove BTRFS SubVol from rootPart if it exists
+      rootPart=''${rootPart//\[*/}
+      rootDevice=$(lsblk -npo PKNAME $rootPart)
+      partNum=$(lsblk -npo PARTN $rootPart)
+
+      # Resize the root partition and the filesystem to fit the disk
+      echo ",+," | sfdisk -N$partNum --no-reread $rootDevice
+      ${pkgs.parted}/bin/partprobe
+      ${pkgs.e2fsprogs}/bin/resize2fs $rootPart
+
+      # Register the contents of the initial Nix store
+      ${config.nix.package.out}/bin/nix-store --load-db < /nix-path-registration
+
+      # nixos-rebuild also requires a "system" profile and an /etc/NIXOS tag.
+      touch /etc/NIXOS
+      ${config.nix.package.out}/bin/nix-env -p /nix/var/nix/profiles/system --set /run/current-system
+
+      # Prevents this from running on later boots.
+      rm -f /nix-path-registration
+    fi
+  '';
+
   system.build.rootfsImage = pkgs.callPackage (pkgs.path + "/nixos/lib/make-ext4-fs.nix") {
     storePaths = config.system.build.toplevel;
     compressImage = false;
