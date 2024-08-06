@@ -20,7 +20,6 @@ Most of the information for the R3 bootflow applies to the R4.
 
 * Updated to version `v2024.10-rc1`. Likely unnecessary.
 * Removed the patches for a consistent MAC, conflicts on the latest version.
-* Updated the environment file addresses. Likely has bugs.
 
 ## Kernel
 

@@ -52,7 +52,6 @@
   postPatch =
     oA.postPatch
     + ''
-      cp ${./mt7988-nixos.env} board/mediatek/mt7988/mt7988-nixos.env
       # Should include via CONFIG_DEVICE_TREE_INCLUDES, but regression in
       # makefile is causing issues.
       # Regression caused by a958988b62eb9ad33c0f41b4482cfbba4aa71564.
