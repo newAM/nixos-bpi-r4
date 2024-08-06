@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -43,7 +42,10 @@
     fsType = "ext4";
   };
 
-  hardware.deviceTree.filter = "mt7988a-bananapi-bpi-r4.dtb";
+  hardware.deviceTree = {
+    filter = "mt7988a*bananapi*.dtb";
+    kernelPackage = pkgs.dtbs_bpi4;
+  };
   hardware.deviceTree.overlays = [
     {
       name = "BananaPi BPiR4 Enable SD card interface";
