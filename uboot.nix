@@ -6,14 +6,6 @@
 }:
 (buildUBoot
   {
-    version = "v2024.10-rc1";
-    src = fetchFromGitHub {
-      owner = "u-boot";
-      repo = "u-boot";
-      # master HEAD 2024-08-02
-      rev = "a70d991212c9684e09ed80ece69ce1ff7bfd9f08";
-      hash = "sha256-wK+eterm+TrbiLwIjYa25yDMgFJ8y7+URr+QhsMP1B8=";
-    };
     defconfig = "mt7988_sd_rfb_defconfig";
     extraMeta.platforms = ["aarch64-linux"];
 
