@@ -1,9 +1,9 @@
 {
   lib,
-  linux_6_9,
+  linux_6_10,
   ...
 }:
-linux_6_9.override {
+linux_6_10.override {
   structuredExtraConfig = with lib.kernel; {
     # Disable extremely unlikely features to reduce build storage requirements and time.
     FB = lib.mkForce no;

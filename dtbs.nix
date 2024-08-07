@@ -1,9 +1,9 @@
 {
-  linuxPackages_6_9,
+  linuxPackages_6_10,
   fetchurl,
   ...
 }:
-linuxPackages_6_9.kernel.overrideAttrs (oldAttrs: {
+linuxPackages_6_10.kernel.overrideAttrs (oldAttrs: {
   pname = "linux-bpi-r4-dtbs";
   buildFlags = ["dtbs"];
   installTargets = ["dtbs_install"];
