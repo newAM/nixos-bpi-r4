@@ -21,10 +21,6 @@ Most of the information for the R3 bootflow applies to the R4.
 * Removed the patches for a consistent MAC, conflicts on the latest version.
 * Updated the environment file addresses. Likely has bugs.
 
-## Kernel
-
-* Used Frank Wunderlich's kernel fork containing patches for the R4.
-
 ## Status
 
 Boots into an interactive shell.

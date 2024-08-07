@@ -6,6 +6,7 @@
     nixpkgs,
   }: let
     overlay = final: prev: {
+      dtbs_bpi4 = prev.callPackage ./dtbs.nix {};
       firmware_bpir4 = prev.callPackage ./firmware.nix {};
       linuxKernel_bpir4 = prev.callPackage ./kernel.nix {};
       uboot_bpir4 = prev.callPackage ./uboot.nix {};
@@ -22,6 +23,7 @@
     packages.x86_64-linux = {
       inherit
         (pkgs)
+        dtbs_bpi4
         firmware_bpir4
         linuxKernel_bpir4
         uboot_bpir4
@@ -38,6 +40,7 @@
     checks.x86_64-linux = {
       inherit
         (pkgs)
+        dtbs_bpi4
         firmware_bpir4
         linuxKernel_bpir4
         uboot_bpir4
