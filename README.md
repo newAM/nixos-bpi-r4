@@ -1,5 +1,10 @@
 # NixOS on the Banana Pi R4
 
+> [!CAUTION]
+> This repository has been archived.
+> Reference [nixos-sbc issue #12] for the latest information on running NixOS
+> on the Banana Pi R4.
+
 I was inspired by the [NixOS router blog] to use NixOS for a router.
 
 In that blog the author uses a [Banana Pi R3].
@@ -33,6 +38,7 @@ Contains an error during stage 1 that needs to be fixed.
 See `bootlog.txt` for more information.
 
 [nixos-sbc]: https://github.com/nakato/nixos-sbc
+[nixos-sbc issue #12]: https://github.com/nakato/nixos-sbc/issues/12
 [Banana Pi R3]: https://wiki.banana-pi.org/Banana_Pi_BPI-R3
 [Banana Pi R4]: https://wiki.banana-pi.org/Banana_Pi_BPI-R4
 [NixOS router blog]: https://github.com/ghostbuster91/blogposts/blob/a2374f0039f8cdf4faddeaaa0347661ffc2ec7cf/router2023/main.md
